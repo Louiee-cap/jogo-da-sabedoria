@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import messagebox
 import random
 
-# Base de perguntas (você pode separar por matéria/série depois)
+# Base de perguntas
 perguntas = [
     ("Qual a capital do Brasil?", "São Paulo", "Brasília", "Rio de Janeiro", "Salvador", "Curitiba", "B"),
     ("Quem pintou a Mona Lisa?", "Van Gogh", "Picasso", "Leonardo da Vinci", "Michelangelo", "Rembrandt", "C"),
