@@ -1,3 +1,4 @@
+#Jogo da Sabedoria Mauá x Poliedro V1.0
 import tkinter as tk
 from tkinter import messagebox
 import random
