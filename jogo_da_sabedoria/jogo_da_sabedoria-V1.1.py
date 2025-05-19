@@ -1,3 +1,4 @@
+#Implementação da tela de logn do aluno e do professor
 import tkinter as tk  
 from tkinter import messagebox
 import random
