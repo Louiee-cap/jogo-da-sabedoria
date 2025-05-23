@@ -1,0 +1,105 @@
+from pathlib import Path
+from tkinter import *
+import tkinter as tk
+
+OUTPUT_PATH = Path(__file__).parent
+ASSETS_PATH = OUTPUT_PATH / Path(r"assets/imagens/professor")
+
+def pasta_imagens(path: str) -> Path:
+    return ASSETS_PATH / Path(path)
+
+window = Tk()
+window.geometry("1440x1024")
+window.configure(bg="#F0F0F0")
+
+canvas = Canvas(
+    window,
+    bg="#F0F0F0",
+    height=1024,
+    width=1440,
+    bd=0,
+    highlightthickness=0,
+    relief="ridge"
+)
+canvas.place(x=0, y=0)
+
+# Onda inferior
+img_wave = PhotoImage(file=str(pasta_imagens("wave.png")))
+wave = canvas.create_image(750.0, 848.0, image=img_wave)
+
+# Título colorido e alinhado
+canvas.create_text(420.0, 40.0, anchor="nw", text="Edição", fill="#46AEBD", font=("Georgia", 48, "bold"))
+canvas.create_text(660.0, 40.0, anchor="nw", text="de", fill="#F89E19", font=("Georgia", 48, "bold"))
+canvas.create_text(760.0, 40.0, anchor="nw", text="Questões", fill="#EB2452", font=("Georgia", 48, "bold"))
+
+# Subtítulo
+canvas.create_text(580.0, 120.0, anchor="nw", text="Escolha a Matéria:", fill="#333333", font=("Georgia", 20, "bold"))
+
+# Botões de matéria
+materia_var = StringVar(value="Matemática")
+materias = ["Matemática", "Português", "História", "Geografia"]
+for i, mat in enumerate(materias):
+    Radiobutton(
+        window,
+        text=mat,
+        variable=materia_var,
+        value=mat,
+        bg="#F0F0F0",
+        font=("Georgia", 16),
+        anchor="w"
+    ).place(x=640, y=160 + i * 30)
+
+# Entradas de texto
+entries = []
+entry_width_px = 400
+entry_x = (1440 - entry_width_px) // 2
+for i in range(6):
+    entry = Entry(window, font=("Georgia", 16))
+    entry.place(x=entry_x, y=300 + i * 50, width=entry_width_px, height=30)
+    entries.append(entry)
+
+# Imagens dos botões
+img_button_add = PhotoImage(file=str(pasta_imagens("button_adicionar.png")))
+img_button_voltar = PhotoImage(file=str(pasta_imagens("button_voltar.png")))
+
+# Botão Adicionar Pergunta com imagem (tamanho ajustado)
+button_add = Button(
+    window,
+    image=img_button_add,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("Pergunta adicionada"),
+    relief="flat"
+)
+largura_add = img_button_add.width()
+altura_add = img_button_add.height()
+button_add.place(x=620, y=620, width=210, height=80)
+
+# Botão Voltar com imagem (tamanho ajustado)
+button_voltar = Button(
+    window,
+    image=img_button_voltar,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("Voltar clicado"),
+    relief="flat"
+)
+largura_voltar = img_button_voltar.width()
+altura_voltar = img_button_voltar.height()
+button_voltar.place(x=660, y=690, width=132, height=80)
+
+# Botão Sair no topo
+canvas.create_text(80.0, 21.0, anchor="nw", text="Sair", fill="#F89E19", font=("Georgia", 36, "bold"))
+
+button_img_sair = PhotoImage(file=str(pasta_imagens("button_sair.png")))
+button_sair = Button(
+    image=button_img_sair,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_sair clicked"),
+    relief="flat"
+)
+button_sair.place(x=15.0, y=15.0, width=56.0, height=56.0)
+
+window.resizable(False, False)
+window.mainloop()
