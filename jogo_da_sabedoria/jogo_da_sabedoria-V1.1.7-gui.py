@@ -170,8 +170,7 @@ class JogoDaSabedoriaApp:
         usuario = self.entry_usuario.get()
         senha = self.entry_senha.get()
 
-        if usuario and senha:
-            self.usuario = usuario
+        if usuario == "aluno" and senha == "abcd":
             self.tela_aluno()
         else:
             messagebox.showerror("Erro", "Usuário ou senha inválidos.")
