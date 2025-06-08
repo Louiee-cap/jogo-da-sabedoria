@@ -1,6 +1,6 @@
-+-----------------------------------------------------------+
++---------------------------------------------------+
 |                           JOGO DA SABEDORIA                            |
-+------------------------------------------------------+
++-----------------------------------------------+
 
 Um sistema de quiz educacional desenvolvido em Python, utilizando a 
 biblioteca Tkinter para a interface gráfica.
